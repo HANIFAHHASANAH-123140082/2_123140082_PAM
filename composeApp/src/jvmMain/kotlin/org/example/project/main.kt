@@ -1,7 +1,13 @@
 package org.example.project
 
-import kotlinx.coroutines.runBlocking
+import androidx.compose.ui.window.Window
+import androidx.compose.ui.window.application
 
-fun main() = runBlocking {
-    runNewsFeedSimulator()
+fun main() = application {
+    Window(
+        onCloseRequest = ::exitApplication,
+        title = "My Profile App - Hanifah Hasanah"
+    ) {
+        App()
+    }
 }
