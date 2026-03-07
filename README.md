@@ -1,27 +1,29 @@
-This is a Kotlin Multiplatform project targeting Desktop (JVM).
+# Tugas 2 PAM - News Feed Simulator
+NAMA : HANIFAH HASANAH
+NIM : 123140082
 
-* [/composeApp](./composeApp/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./composeApp/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./composeApp/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./composeApp/src/jvmMain/kotlin)
-    folder is the appropriate location.
+## Deskripsi
+Aplikasi simulasi news feed menggunakan Kotlin Coroutines dan Flow.
 
-### Build and Run Desktop (JVM) Application
+## Fitur
+1. Flow mensimulasikan berita baru setiap 2 detik
+2. Filter berita berdasarkan kategori (Teknologi)
+3. Transform data ke format [KATEGORI] Judul
+4. StateFlow menyimpan jumlah berita yang sudah dibaca
+5. Coroutines async untuk mengambil detail berita
 
-To build and run the development version of the desktop app, use the run configuration from the run widget
-in your IDE’s toolbar or run it directly from the terminal:
-- on macOS/Linux
-  ```shell
-  ./gradlew :composeApp:run
-  ```
-- on Windows
-  ```shell
-  .\gradlew.bat :composeApp:run
-  ```
+## Cara Menjalankan
+1. Clone repository ini
+2. Buka dengan Android Studio
+3. Tunggu Gradle sync selesai
+4. Jalankan konfigurasi `composeApp [jvm]`
+5. Output akan muncul di konsol Run
 
----
+## Teknologi
+- Kotlin
+- Kotlinx Coroutines
+- Kotlin Flow / StateFlow
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+## Hasil
+<img width="1919" height="1007" alt="Screenshot 2026-03-08 020056" src="https://github.com/user-attachments/assets/4731757c-17ab-45d6-af1a-3cbaf8e8d80c" />
+
