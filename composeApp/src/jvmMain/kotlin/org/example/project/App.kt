@@ -1,5 +1,5 @@
 package org.example.project
-
+import org.example.project.navigation.AppNavigation
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import org.example.project.ui.ProfileTextField
+
 import org.example.project.viewmodel.ProfileViewModel
 import androidx.compose.runtime.remember
 // =============================================
@@ -62,49 +63,10 @@ private val DarkColors = darkColorScheme(
 // =============================================
 @Composable
 fun App() {
-    val viewModel: ProfileViewModel = remember { ProfileViewModel() }
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-
-    MaterialTheme(
-        colorScheme = if (uiState.isDarkMode) DarkColors else LightColors
-    ) {
-        AnimatedContent(
-            targetState = uiState.isEditing,
-            transitionSpec = { fadeIn(tween(300)) togetherWith fadeOut(tween(300)) }
-        ) { isEditing ->
-            if (isEditing) {
-                EditProfileScreen(
-                    editName = uiState.editName,
-                    editBio = uiState.editBio,
-                    editEmail = uiState.editEmail,
-                    editPhone = uiState.editPhone,
-                    editLocation = uiState.editLocation,
-                    isDarkMode = uiState.isDarkMode,
-                    onNameChange = viewModel::onNameChange,
-                    onBioChange = viewModel::onBioChange,
-                    onEmailChange = viewModel::onEmailChange,
-                    onPhoneChange = viewModel::onPhoneChange,
-                    onLocationChange = viewModel::onLocationChange,
-                    onSave = viewModel::saveProfile,
-                    onCancel = viewModel::cancelEditing,
-                    onToggleDarkMode = viewModel::toggleDarkMode
-                )
-            } else {
-                ProfileScreen(
-                    name = uiState.profile.name,
-                    bio = uiState.profile.bio,
-                    email = uiState.profile.email,
-                    phone = uiState.profile.phone,
-                    location = uiState.profile.location,
-                    isDarkMode = uiState.isDarkMode,
-                    onEditClick = viewModel::startEditing,
-                    onToggleDarkMode = viewModel::toggleDarkMode
-                )
-            }
-        }
+    MaterialTheme {
+        AppNavigation()
     }
 }
-
 // =============================================
 // PROFILE VIEW SCREEN
 // =============================================
