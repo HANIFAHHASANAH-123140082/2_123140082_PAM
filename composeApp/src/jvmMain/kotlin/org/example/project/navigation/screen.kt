@@ -8,6 +8,8 @@ sealed interface Screen {
     object Notes : Screen
     object Favorites : Screen
     object Profile : Screen
+    object AddNote : Screen
+    data class EditNote(val noteId: Int) : Screen
 }
 
 data class BottomNavItem(
